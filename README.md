@@ -86,6 +86,7 @@ The response includes a versioned `engineVersion`, the UTC instant, the correcte
 - [BaZi Calculator](https://bazi-calculator.co/) — the public calculator project using this kind of time normalization.
 - [Four Pillars of Destiny guide](https://bazi-calculator.co/four-pillars-of-destiny) — background on the chart context.
 - [What is a BaZi chart?](https://bazi-calculator.co/what-is-a-bazi-chart) — plain-language chart explanation.
+- [Four Pillars MCP Server](https://github.com/cdaily1995-create/four-pillars-mcp) — the companion deterministic chart calculator.
 - [MCP specification](https://modelcontextprotocol.io/) — protocol documentation.
 - [MCP TypeScript server SDK](https://www.npmjs.com/package/@modelcontextprotocol/server) — server SDK used by this project.
 - [Full link inventory](LINKS.md) and [method references](REFERENCES.md).

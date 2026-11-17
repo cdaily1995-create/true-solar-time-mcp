@@ -6,3 +6,10 @@ dist/
 !.env.example
 *.log
 .DS_Store
+
+# Local development artifacts that must never be committed.
+data/local.db
+.output/
+.nitro/
+src/paraglide/runtime.js
+src/routeTree.gen.ts
