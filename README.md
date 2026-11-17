@@ -1,6 +1,7 @@
 # True Solar Time MCP Server
 
 [![MCP server](https://img.shields.io/badge/MCP-server-5f5bd6)](https://modelcontextprotocol.io/)
+[![npm package](https://img.shields.io/npm/v/bazi-true-solar-time-mcp.svg)](https://www.npmjs.com/package/bazi-true-solar-time-mcp)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 An [MCP](https://modelcontextprotocol.io/) server for deterministic **true solar time** conversion from a local civil time, IANA timezone, and longitude.
@@ -36,6 +37,14 @@ The result includes the civil time, UTC instant, corrected true solar time, long
 
 ## Quick start
 
+Run directly from npm:
+
+```bash
+npx -y bazi-true-solar-time-mcp
+```
+
+Or inspect and build from source:
+
 ```bash
 git clone https://github.com/cdaily1995-create/true-solar-time-mcp.git
 cd true-solar-time-mcp
@@ -44,20 +53,14 @@ pnpm build
 node dist/server.js
 ```
 
-After the package is published, the npm-based shortcut will be:
-
-```bash
-npx -y bazi-true-solar-time-mcp
-```
-
 MCP client configuration:
 
 ```json
 {
   "mcpServers": {
     "true-solar-time": {
-      "command": "node",
-      "args": ["/absolute/path/to/true-solar-time-mcp/dist/server.js"]
+      "command": "npx",
+      "args": ["-y", "bazi-true-solar-time-mcp"]
     }
   }
 }
@@ -93,9 +96,10 @@ The response includes a versioned `engineVersion`, the UTC instant, the correcte
 - [Four Pillars of Destiny guide](https://bazi-calculator.co/four-pillars-of-destiny) — background on the chart context.
 - [What is a BaZi chart?](https://bazi-calculator.co/what-is-a-bazi-chart) — plain-language chart explanation.
 - [Four Pillars MCP Server](https://github.com/cdaily1995-create/four-pillars-mcp) — the companion deterministic chart calculator.
+- [npm package](https://www.npmjs.com/package/bazi-true-solar-time-mcp) — installable stdio MCP server.
 - [MCP specification](https://modelcontextprotocol.io/) — protocol documentation.
 - [MCP TypeScript server SDK](https://www.npmjs.com/package/@modelcontextprotocol/server) — server SDK used by this project.
-- Planned npm package name: `bazi-true-solar-time-mcp` (publication requires an authenticated npm account).
+- [npm installation guide](https://docs.npmjs.com/downloading-and-installing-packages-globally) — package-manager reference.
 - [Full link inventory](LINKS.md) and [method references](REFERENCES.md).
 
 ## Search-friendly description

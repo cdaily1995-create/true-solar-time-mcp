@@ -25,8 +25,8 @@ This page keeps the public, stable links associated with the project in one plac
 
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [MCP TypeScript server SDK](https://www.npmjs.com/package/@modelcontextprotocol/server)
+- [bazi-true-solar-time-mcp on npm](https://www.npmjs.com/package/bazi-true-solar-time-mcp)
 - [ziwei-time on npm](https://www.npmjs.com/package/ziwei-time)
-- Planned package name: `bazi-true-solar-time-mcp` (npm link will be added after publication)
 - [Zod on npm](https://www.npmjs.com/package/zod)
 - [Node.js](https://nodejs.org/)
 - [TypeScript](https://www.typescriptlang.org/)

@@ -1,24 +1,57 @@
 {
   "name": "bazi-true-solar-time-mcp",
   "version": "0.1.0",
-  "description": "A privacy-friendly MCP server for deterministic true solar time conversion from civil time, timezone, and longitude.",
+  "description": "MCP server for deterministic BaZi true solar time from civil time, IANA timezone, and longitude, including equation-of-time and longitude corrections.",
   "type": "module",
   "private": false,
   "license": "MIT",
+  "author": "BaZi Calculator",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cdaily1995-create/true-solar-time-mcp.git"
+    "url": "git+https://github.com/cdaily1995-create/true-solar-time-mcp.git"
   },
-  "homepage": "https://github.com/cdaily1995-create/true-solar-time-mcp",
+  "homepage": "https://bazi-calculator.co/",
+  "bugs": {
+    "url": "https://github.com/cdaily1995-create/true-solar-time-mcp/issues"
+  },
+  "keywords": [
+    "bazi",
+    "four-pillars",
+    "true-solar-time",
+    "solar-time-calculator",
+    "equation-of-time",
+    "longitude",
+    "timezone",
+    "chinese-astrology",
+    "model-context-protocol",
+    "mcp-server"
+  ],
+  "bin": {
+    "bazi-true-solar-time": "dist/server.js"
+  },
+  "main": "dist/server.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "LINKS.md",
+    "REFERENCES.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.json",
     "start": "node dist/server.js",
     "dev": "tsx src/server.ts",
     "test": "node --import tsx --test tests/*.test.ts",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.4.0",
