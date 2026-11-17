@@ -1,5 +1,5 @@
 {
-  "name": "true-solar-time-mcp",
+  "name": "bazi-true-solar-time-mcp",
   "version": "0.1.0",
   "description": "A privacy-friendly MCP server for deterministic true solar time conversion from civil time, timezone, and longitude.",
   "type": "module",

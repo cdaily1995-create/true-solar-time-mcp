@@ -44,6 +44,12 @@ pnpm build
 node dist/server.js
 ```
 
+After the package is published, the npm-based shortcut will be:
+
+```bash
+npx -y bazi-true-solar-time-mcp
+```
+
 MCP client configuration:
 
 ```json
@@ -89,6 +95,7 @@ The response includes a versioned `engineVersion`, the UTC instant, the correcte
 - [Four Pillars MCP Server](https://github.com/cdaily1995-create/four-pillars-mcp) — the companion deterministic chart calculator.
 - [MCP specification](https://modelcontextprotocol.io/) — protocol documentation.
 - [MCP TypeScript server SDK](https://www.npmjs.com/package/@modelcontextprotocol/server) — server SDK used by this project.
+- Planned npm package name: `bazi-true-solar-time-mcp` (publication requires an authenticated npm account).
 - [Full link inventory](LINKS.md) and [method references](REFERENCES.md).
 
 ## Search-friendly description
