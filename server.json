@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.cdaily1995-create/true-solar-time",
+  "title": "BaZi True Solar Time MCP",
+  "description": "Deterministic true solar time conversion for BaZi and calendrical workflows.",
+  "repository": {
+    "url": "https://github.com/cdaily1995-create/true-solar-time-mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "bazi-true-solar-time-mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

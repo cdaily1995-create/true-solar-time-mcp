@@ -1,6 +1,7 @@
 {
   "name": "bazi-true-solar-time-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "mcpName": "io.github.cdaily1995-create/true-solar-time",
   "description": "MCP server for deterministic BaZi true solar time from civil time, IANA timezone, and longitude, including equation-of-time and longitude corrections.",
   "type": "module",
   "private": false,
