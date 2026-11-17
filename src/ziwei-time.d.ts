@@ -1,5 +1,8 @@
-declare module 'ziwei-time' {
-  export function tzOffsetMinutes(utcMs: number, timeZone: string): number | null;
+declare module "ziwei-time" {
+  export function tzOffsetMinutes(
+    utcMs: number,
+    timeZone: string,
+  ): number | null;
   export function trueSolarTime(options: {
     date: string;
     time: string;

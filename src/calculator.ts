@@ -1,6 +1,6 @@
-import { trueSolarTime, tzOffsetMinutes } from 'ziwei-time';
+import { trueSolarTime, tzOffsetMinutes } from "ziwei-time";
 
-export const ENGINE_VERSION = 'true-solar-time-mcp/0.1.0';
+export const ENGINE_VERSION = "true-solar-time-mcp/0.1.0";
 
 export interface TrueSolarTimeInput {
   date: string;
@@ -23,7 +23,7 @@ export interface TrueSolarTimeResult {
     dstMinutes: number;
     dayShift: number;
   };
-  confidence: 'high' | 'medium' | 'low';
+  confidence: "high" | "medium" | "low";
   warnings: string[];
 }
 
@@ -34,7 +34,7 @@ function parseDateTime(date: string, time: string) {
   const dateMatch = DATE_RE.exec(date);
   const timeMatch = TIME_RE.exec(time);
   if (!dateMatch || !timeMatch)
-    throw new Error('date must use YYYY-MM-DD and time must use HH:mm');
+    throw new Error("date must use YYYY-MM-DD and time must use HH:mm");
 
   const year = Number(dateMatch[1]);
   const month = Number(dateMatch[2]);
@@ -49,13 +49,13 @@ function parseDateTime(date: string, time: string) {
     hour > 23 ||
     minute > 59
   ) {
-    throw new Error('date or time is invalid');
+    throw new Error("date or time is invalid");
   }
   return { year, month, day, hour, minute };
 }
 
 function pad2(value: number) {
-  return String(value).padStart(2, '0');
+  return String(value).padStart(2, "0");
 }
 
 function partsFromUtcOffset(utcMs: number, offsetMinutes: number) {
@@ -67,12 +67,12 @@ function partsFromUtcOffset(utcMs: number, offsetMinutes: number) {
 }
 
 function calendarDayShift(fromDate: string, toDate: string) {
-  const from = parseDateTime(fromDate, '00:00');
-  const to = parseDateTime(toDate, '00:00');
+  const from = parseDateTime(fromDate, "00:00");
+  const to = parseDateTime(toDate, "00:00");
   return Math.round(
     (Date.UTC(to.year, to.month - 1, to.day) -
       Date.UTC(from.year, from.month - 1, from.day)) /
-      86_400_000
+      86_400_000,
   );
 }
 
@@ -86,24 +86,24 @@ function standardOffsetMinutes(utcMs: number, timezone: string) {
 }
 
 function nearestHourBoundaryMinutes(time: string) {
-  const [hour, minute] = time.split(':').map(Number);
+  const [hour, minute] = time.split(":").map(Number);
   const total = hour * 60 + minute;
   const boundaries = Array.from({ length: 12 }, (_, index) => 60 + index * 120);
   return Math.min(
     ...boundaries.map((value) => Math.abs(total - value)),
     total,
-    Math.abs(1440 - total)
+    Math.abs(1440 - total),
   );
 }
 
 function confidenceFor(boundaryMinutes: number, crossedDate: boolean) {
-  if (boundaryMinutes <= 10) return 'low' as const;
-  if (boundaryMinutes <= 30 || crossedDate) return 'medium' as const;
-  return 'high' as const;
+  if (boundaryMinutes <= 10) return "low" as const;
+  if (boundaryMinutes <= 30 || crossedDate) return "medium" as const;
+  return "high" as const;
 }
 
 export function calculateTrueSolarTime(
-  input: TrueSolarTimeInput
+  input: TrueSolarTimeInput,
 ): TrueSolarTimeResult {
   parseDateTime(input.date, input.time);
   if (
@@ -111,19 +111,19 @@ export function calculateTrueSolarTime(
     input.longitude < -180 ||
     input.longitude > 180
   )
-    throw new Error('longitude must be between -180 and 180');
+    throw new Error("longitude must be between -180 and 180");
   if (
     input.latitude !== undefined &&
     (!Number.isFinite(input.latitude) ||
       input.latitude < -90 ||
       input.latitude > 90)
   ) {
-    throw new Error('latitude must be between -90 and 90');
+    throw new Error("latitude must be between -90 and 90");
   }
   try {
-    new Intl.DateTimeFormat('en', { timeZone: input.timezone }).format();
+    new Intl.DateTimeFormat("en", { timeZone: input.timezone }).format();
   } catch {
-    throw new Error('timezone must be a valid IANA time zone');
+    throw new Error("timezone must be a valid IANA time zone");
   }
 
   const wallClockAsUtc = Date.UTC(
@@ -131,15 +131,15 @@ export function calculateTrueSolarTime(
     parseDateTime(input.date, input.time).month - 1,
     parseDateTime(input.date, input.time).day,
     parseDateTime(input.date, input.time).hour,
-    parseDateTime(input.date, input.time).minute
+    parseDateTime(input.date, input.time).minute,
   );
   const localOffset = tzOffsetMinutes(wallClockAsUtc, input.timezone);
   if (localOffset === null)
-    throw new Error('timezone offset could not be resolved');
+    throw new Error("timezone offset could not be resolved");
   const utcMs = wallClockAsUtc - localOffset * 60_000;
   const refinedOffset = tzOffsetMinutes(utcMs, input.timezone);
   if (refinedOffset === null)
-    throw new Error('historical timezone could not be resolved');
+    throw new Error("historical timezone could not be resolved");
 
   const solar = trueSolarTime({
     date: input.date,
@@ -151,15 +151,15 @@ export function calculateTrueSolarTime(
   });
   const totalMinutes = input.longitude * 4 - refinedOffset + solar.eotMinutes;
   const corrected = new Date(
-    wallClockAsUtc + Math.round(totalMinutes) * 60_000
+    wallClockAsUtc + Math.round(totalMinutes) * 60_000,
   );
   const trueSolar = partsFromUtcOffset(corrected.getTime(), 0);
   const standardOffset = standardOffsetMinutes(utcMs, input.timezone);
   const dayShift = calendarDayShift(input.date, trueSolar.date);
   const boundaryMinutes = nearestHourBoundaryMinutes(trueSolar.time);
   const warnings: string[] = [];
-  if (dayShift !== 0) warnings.push('true_solar_date_shift');
-  if (boundaryMinutes <= 30) warnings.push('near_hour_boundary');
+  if (dayShift !== 0) warnings.push("true_solar_date_shift");
+  if (boundaryMinutes <= 30) warnings.push("near_hour_boundary");
 
   return {
     engineVersion: ENGINE_VERSION,
