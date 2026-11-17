@@ -1,0 +1,34 @@
+{
+  "name": "true-solar-time-mcp",
+  "version": "0.1.0",
+  "description": "A privacy-friendly MCP server for deterministic true solar time conversion from civil time, timezone, and longitude.",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdaily1995-create/true-solar-time-mcp.git"
+  },
+  "homepage": "https://github.com/cdaily1995-create/true-solar-time-mcp",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.4.0",
+    "ziwei-time": "^0.1.3",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
