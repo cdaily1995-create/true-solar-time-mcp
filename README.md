@@ -3,6 +3,7 @@
 [![MCP server](https://img.shields.io/badge/MCP-server-5f5bd6)](https://modelcontextprotocol.io/)
 [![npm package](https://img.shields.io/npm/v/bazi-true-solar-time-mcp.svg)](https://www.npmjs.com/package/bazi-true-solar-time-mcp)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![AllMCPs Verified](https://allmcps.com/api/badge/bazi-true-solar-time-mcp)](https://allmcps.com/mcp/bazi-true-solar-time-mcp?verify=4823551c-f607-4d63-a67f-ce4a81a7476b)
 
 An [MCP](https://modelcontextprotocol.io/) server for deterministic **true solar time** conversion from a local civil time, IANA timezone, and longitude.
 
